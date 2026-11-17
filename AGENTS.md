@@ -1,6 +1,6 @@
 # Project conventions
 
-- Use Bun 1.4.2 as the only JavaScript/TypeScript runtime and package manager. Run frontend commands from `frontend/`.
+- Use Bun at the version declared in `.bun-version` as the only JavaScript/TypeScript runtime and package manager. Run frontend commands from `frontend/`.
 - Use `bun install`, `bun add`, `bun remove`, `bun run <script>`, and `bunx --bun` for one-off tools. Prefer the project's installed commands and frozen lockfile.
 - Run TypeScript scripts directly with Bun. Keep tooling, CI, hooks, examples, and project skill instructions consistent with this runtime.
 - When applying an external skill, adapt all JavaScript/TypeScript commands to Bun. Generic package-manager examples in a skill do not override this project convention. Python backend tooling continues to use uv.

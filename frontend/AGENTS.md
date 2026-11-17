@@ -1,6 +1,6 @@
 # Frontend
 
-- Bun 1.4.2 only; run frontend commands here. Root `bun run dev` starts the full stack. Read `../docs/conventions.md` before adding a page or a query.
+- The Bun runtime is selected by `../.bun-version`; run frontend commands here. Root `bun run dev` starts the full stack. Read `../docs/conventions.md` before adding a page or a query.
 - TanStack Start SPA + React Query. Cookie/localStorage-dependent UI in the prerendered shell uses `ClientOnly`. `app/routes` are thin adapters; page-specific code stays in `pages/<slice>`. Extract shared slices only when reused. Import lower FSD layers through their public APIs.
 - Business persistence and permissions belong to FastAPI. `shared/api/generated` comes from OpenAPI (`bun run api:generate`); use `backendClient` with the generated SDK and query helpers, and `invalidateResource` after a mutation. `AuthCacheBoundary` clears the cache on logout and session switch, so query keys need no session scoping.
 - Better Auth owns only the PostgreSQL `auth` schema through Drizzle. Keep server modules `.server.ts`, import them through a slice's `index.server.ts`, and keep them out of browser entrypoints. Auth changes: read `shared/auth/AGENTS.md`.
