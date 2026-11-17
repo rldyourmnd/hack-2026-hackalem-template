@@ -9,7 +9,7 @@ setup-source:
     cmp --silent .bun-version <(bun --version)
     cd frontend && bun install --frozen-lockfile --ignore-scripts
     cd tools/api-client && bun install --frozen-lockfile --ignore-scripts
-    cd backend && UV_PROJECT_ENVIRONMENT=.venv-source uv sync --locked --no-build --no-install-project
+    cd backend && UV_PROJECT_ENVIRONMENT=../.venv-source uv sync --locked --no-build --no-install-project
 
 # Prepares the existing application and disposable database on execution hosts.
 setup:
@@ -23,17 +23,17 @@ check:
     actionlint
     zizmor --offline --no-progress .github
     cd frontend && bun x --no-install oxfmt --check
-    backend/.venv-source/bin/ruff format --check backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
-    backend/.venv-source/bin/ruff check backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
-    cd backend && .venv-source/bin/mypy
+    .venv-source/bin/ruff format --check backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
+    .venv-source/bin/ruff check backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
+    cd backend && ../.venv-source/bin/mypy
     betterleaks git --no-banner --redact .
 
 # Applies source formatting and automatic lint fixes.
 fix:
     just --fmt
     cd frontend && bun x --no-install oxfmt
-    backend/.venv-source/bin/ruff format backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
-    backend/.venv-source/bin/ruff check --fix backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
+    .venv-source/bin/ruff format backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
+    .venv-source/bin/ruff check --fix backend tools/ci.py tools/check-generated.py tools/test_secret_ignore.py
 
 # Runs generated prerequisites, type/contract checks and the existing test suites.
 test:

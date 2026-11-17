@@ -20,4 +20,4 @@ __pycache__/
 .serena/.sync_marker
 
 # Frozen source-check environment; the application environment stays separate.
-backend/.venv-source/
+/.venv-source/
