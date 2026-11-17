@@ -1,4 +1,15 @@
-# VibeStrap
+<!-- nddev-public-hackathon -->
+# hack-2026-hackalem-template
+
+Saint Tibo 2026 hackathon application template: TanStack Start, React, FastAPI and PostgreSQL; adapted from VibeStrap.
+
+[NDDev OpenNetwork](https://github.com/NDDev-Technocracy-OpenNetwork) · [Repository](https://github.com/rldyourmnd/hack-2026-hackalem-template)
+
+This repository is a hackathon prototype or supporting tool. Follow the project-specific setup below; cloud integrations require your own configuration and credentials.
+
+---
+
+## VibeStrap
 
 Стартовый проект: TanStack Start / React / TypeScript, FastAPI / Python,
 PostgreSQL. Нужны Bun **1.4.2**, uv и Docker Compose.
