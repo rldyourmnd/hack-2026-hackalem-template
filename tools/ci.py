@@ -1,7 +1,8 @@
-"""Run the existing native verification with job-owned database cleanup."""
+"""Run native verification and security with job-owned database cleanup."""
 
 import signal
 import subprocess
+import sys
 
 
 def stop(signum, _frame):
@@ -10,12 +11,22 @@ def stop(signum, _frame):
 
 def main():
     signal.signal(signal.SIGTERM, stop)
+    application_status = 125
+    security_status = 125
+    cleanup_status = 125
     try:
-        subprocess.run(["just", "setup"], check=True)
-        subprocess.run(["just", "verify"], check=True)
+        application_status = subprocess.run(["just", "setup"], check=False).returncode
+        if application_status == 0:
+            application_status = subprocess.run(
+                ["just", "verify-application"], check=False
+            ).returncode
+        security_status = subprocess.run(["just", "security"], check=False).returncode
     finally:
-        subprocess.run(["docker", "compose", "down", "-v"], check=True)
+        cleanup_status = subprocess.run(
+            ["docker", "compose", "down", "-v"], check=False
+        ).returncode
+    return application_status or security_status or cleanup_status
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

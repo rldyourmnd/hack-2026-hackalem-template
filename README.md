@@ -78,3 +78,9 @@ the original immutable commit, path, rule and line. The native suite proves
 that another finding in the same commit and a new finding in a later commit
 still fail; it also checks the declared scanner identity. No live validation
 request is needed.
+
+
+`just security` scans the frozen dependency graph. CI runs it even if application
+verification fails, and cleanup preserves the first failure. Existing dependency
+alerts remain actionable until their ordinary updater proposal and real native
+checks qualify the patched lock.

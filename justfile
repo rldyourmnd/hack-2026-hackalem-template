@@ -58,8 +58,16 @@ generated:
 container:
     docker build -t vibestrap-backend:ci backend
 
-# Runs every source, native, generated, integration and image gate.
-verify: check test build integration generated container
+# Scans the frozen dependency graph without installing or changing packages.
+security:
+    osv-scanner scan source --recursive .
+
+# Runs the complete application verification used by CI.
+[private]
+verify-application: check test build integration generated container
+
+# Runs every source, native, generated, integration, image and vulnerability gate.
+verify: verify-application security
 
 # Runs the complete existing job lifecycle with resource cleanup on every ordinary outcome.
 ci:

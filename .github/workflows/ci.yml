@@ -23,7 +23,7 @@ jobs:
       fetch-depth: 0
       bun-version: '1.4.2'
       uv-version: '0.12.13'
-      tools: zizmor@1.32.0
+      tools: zizmor@1.32.0,osv-scanner@2.7.1
       tool-assets: .github/source-tools.json
       images: true
       timeout-minutes: 20
