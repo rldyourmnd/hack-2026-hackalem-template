@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  native:
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/recipe.yml@03d53ec146797bc27d7b8b37abbf766ab82041b6 # v0.6.81
+    permissions:
+      contents: read
+    with:
+      hosted-runner: ubuntu-26.04
+      recipe: ci
+      fetch-depth: 0
+      bun-version: '1.4.2'
+      uv-version: '0.12.13'
+      tools: zizmor@1.32.0
+      tool-assets: .github/source-tools.json
+      images: true
+      timeout-minutes: 20
+
+  merge-stops:
+    uses: NDDev-Technocracy-OpenNetwork/nddev-ci/.github/workflows/merge-stops.yml@03d53ec146797bc27d7b8b37abbf766ab82041b6 # v0.6.81
+    permissions:
+      contents: read
+
+  verify:
+    if: ${{ always() }}
+    needs: [native, merge-stops]
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Require the shared checks
+        env:
+          NATIVE_RESULT: ${{ needs.native.result }}
+          MERGE_STOPS_RESULT: ${{ needs['merge-stops'].result }}
+        run: |
+          test "$NATIVE_RESULT" = success
+          if [ "$GITHUB_EVENT_NAME" = pull_request ]; then
+            test "$MERGE_STOPS_RESULT" = success
+          fi

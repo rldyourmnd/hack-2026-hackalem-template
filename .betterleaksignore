@@ -1,0 +1,16 @@
+# Reviewed non-secret UI labels, HTML autocomplete values and public scaffold
+# development/build placeholders from the two initial commits.
+# Each exact finding is bound to its immutable commit, file, rule and line.
+# No whole commit, path, rule or future finding is excluded.
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:.env.example:generic-password:4
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/drizzle.auth.config.ts:generic-credential-uri:15
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/messages/en.json:generic-password:16
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/messages/kk.json:generic-password:16
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/messages/ru.json:generic-password:16
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/scripts/test-integration.ts:generic-credential-uri:10
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/src/app/server/auth-db.server.ts:generic-credential-uri:12
+cac57c4faa0f7ace09d6f9dfa79f782324b01a98:frontend/src/pages/login/ui/login-page.tsx:generic-password:137
+d35516ab732e3e9a5d8147ff3625f66c2b3731fa:frontend/Dockerfile:generic-credential-uri:16
+d35516ab732e3e9a5d8147ff3625f66c2b3731fa:frontend/messages/en.json:generic-password:25
+d35516ab732e3e9a5d8147ff3625f66c2b3731fa:frontend/messages/kk.json:generic-password:25
+d35516ab732e3e9a5d8147ff3625f66c2b3731fa:frontend/messages/ru.json:generic-password:25

@@ -1,4 +1,15 @@
-# VibeStrap
+<!-- nddev-public-hackathon -->
+# hack-2026-hackalem-template
+
+Saint Tibo 2026 hackathon application template: TanStack Start, React, FastAPI and PostgreSQL; adapted from VibeStrap.
+
+[NDDev OpenNetwork](https://github.com/NDDev-Technocracy-OpenNetwork) · [Repository](https://github.com/rldyourmnd/hack-2026-hackalem-template)
+
+This repository is a hackathon prototype or supporting tool. Follow the project-specific setup below; cloud integrations require your own configuration and credentials.
+
+---
+
+## VibeStrap
 
 Стартовый проект: TanStack Start / React / TypeScript, FastAPI / Python,
 PostgreSQL. Нужны Bun **1.4.2**, uv и Docker Compose.
@@ -42,3 +53,34 @@ Start, статического `dist/client` недостаточно. `bun run
 
 [Соглашения](docs/conventions.md) · [Правила доступа](docs/access-control.md) ·
 [Backend](backend/README.md) · [Frontend](frontend/README.md).
+
+
+## CI commands
+
+Use the declared Bun runtime before `just setup-source` and `just check`.
+Source preparation installs frozen dependencies without lifecycle scripts or
+application installation. The source check reads existing files only; it does
+not create an environment file, generate routes/translations, run tests or
+start a database.
+
+The existing generated prerequisites and type/contract checks remain in
+`just test`. `just verify` also retains both application builds, real disposable
+database auth/RBAC integration, generated-client drift validation and the backend
+image build. CI calls `just ci`, which runs the existing setup and complete
+verification with database cleanup on every ordinary outcome. Dependency and
+runtime versions remain in their existing declarations; the normal updater owns
+later changes. Current member-lane and main integration guards remain in force.
+
+
+The full-history scanner keeps exact finding fingerprints for reviewed public
+scaffold placeholders and UI text in its native ignore file. Each entry binds
+the original immutable commit, path, rule and line. The native suite proves
+that another finding in the same commit and a new finding in a later commit
+still fail; it also checks the declared scanner identity. No live validation
+request is needed.
+
+
+`just security` scans the frozen dependency graph. CI runs it even if application
+verification fails, and cleanup preserves the first failure. Existing dependency
+alerts remain actionable until their ordinary updater proposal and real native
+checks qualify the patched lock.

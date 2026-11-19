@@ -1,92 +1,84 @@
 schema_version: 1
-
 repository:
-  id: "repo_01M31VT2VXJ1V8S1SMKVZKHD2W"
-  display_name: "vibestrap"
+  id: repo_01M31VT2VXJ1V8S1SMKVZKHD2W
+  display_name: hack-2026-hackalem-template
   roles:
-    - "project"
-    - "module"
-  lifecycle: "active"
-
+  - project
+  - module
+  lifecycle: active
 provider:
-  type: "github"
-  installation: "installation:github-opennetwork"
+  type: github
+  installation: installation:github-personal
   repository_id: 1378807620
-  owner: "NDDev-OpenNetwork"
-  name: "vibestrap"
-
+  owner: rldyourmnd
+  name: hack-2026-hackalem-template
+  aliases:
+  - owner: NDDev-OpenNetwork
+    name: vibestrap
+  - owner: NDDev-Technocracy-Archive
+    name: hack-2026-hackalem-template
+  - owner: NDDev-Technocracy-OpenNetwork
+    name: hack-2026-hackalem-template
 classification:
   portfolios:
-    - "portfolio:opennetwork-projects"
-  visibility_contract: "private"
-  data_classification: "private"
-
+  - portfolio:rldyourmnd
+  visibility_contract: public
+  data_classification: public
 product:
-  purpose: >-
-    The Saint Tibo hackathon product skeleton, adapted from the public
-    R3flector/vibestrap starter: a Bun/TypeScript frontend, a FastAPI
-    backend and PostgreSQL, being finished under the hack-setup operating
-    contract. Registered 2026-09-21 while still private so that hack-setup
-    can consume it as a git submodule; on event day the product moves to
-    the hackathon organization repository.
+  purpose: 'Saint Tibo 2026 hackathon application template: TanStack Start, React,
+    FastAPI and PostgreSQL; adapted from VibeStrap.'
   capabilities:
-    - "Bun 1.4.2 TypeScript frontend (React 19 + Vite) with generated API client"
-    - "FastAPI backend with SQLAlchemy/Alembic on PostgreSQL, Better Auth, seeded demo data"
-    - "hackathon lane workflow: feat/<issue>-<slug> -> <user> -> dev -> main"
+  - Bun 1.4.2 TypeScript frontend (React 19 + Vite) with generated API client
+  - FastAPI backend with SQLAlchemy/Alembic on PostgreSQL, Better Auth, seeded demo
+    data
+  - 'hackathon lane workflow: feat/<issue>-<slug> -> <user> -> dev -> main'
   entrypoints:
-    - change: "what this repository is and what it may do"
-      path: ".gds/repository.yaml"
-    - change: "project conventions and workspace commands"
-      path: "AGENTS.md"
-    - change: "the domain, API and i18n conventions a feature touches"
-      path: "docs/conventions.md"
-
-# `opennetwork-default` is not assignable: its policy match requires
-# `visibility_contract: public`. The standard private-owner pairing applies,
-# matching `platform-sources` assignments under NDDev-Platform.
+  - change: what this repository is and what it may do
+    path: .gds/repository.yaml
+  - change: project conventions and workspace commands
+    path: AGENTS.md
+  - change: the domain, API and i18n conventions a feature touches
+    path: docs/conventions.md
 policy:
   profiles:
-    - "repository-default"
-    - "organization-default"
-  rollout_ring: "standard"
-
+  - repository-default
+  - personal-default
+  rollout_ring: standard
 git:
-  default_branch: "main"
-  integration: "pull-request"
-  branch_model: "task-branches"
-  handoff_pr: "preferred"
-  cleanup: "merged-only"
-
+  default_branch: main
+  integration: pull-request
+  branch_model: task-branches
+  handoff_pr: preferred
+  cleanup: merged-only
 agent:
-  context_profile: "project-default"
+  context_profile: project-default
   generated_agents: false
   serena:
     enabled: false
     provenance_required: false
-
-# Consumed by hack-setup through a gitlink at `product/vibestrap`; per
-# ADR 0027 it materializes only inside that superproject checkout and gets no
-# standalone device checkout.
 module:
-  contract: "private"
+  contract: private
+  development: "standalone"
   consumption:
-    - "git-submodule"
-  compatibility: "none"
-  pin_policy: "default-branch-commit"
+  - git-submodule
+  compatibility: none
+  pin_policy: default-branch-commit
   publication:
-    registry: "none"
-    github_release: "disabled"
-
+    registry: none
+    github_release: disabled
 verification:
   commands:
-    lint: ["bun run check"]
-    test: ["bun run test"]
-    build: ["bun run build"]
-    full: ["bun run verify"]
+    lint:
+    - bun run check
+    test:
+    - bun run test
+    build:
+    - bun run build
+    full:
+    - bun run verify
   required:
-    - "lint"
-    - "test"
-    - "build"
-
+  - lint
+  - test
+  - build
 release:
-  mode: "none"
+  mode: none
