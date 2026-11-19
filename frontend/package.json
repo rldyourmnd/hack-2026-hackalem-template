@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@feature-sliced/steiger-plugin": "^0.7.0",
-    "@inlang/paraglide-js": "^2.25.4",
+    "@inlang/paraglide-js": "^3.0.0",
     "@rolldown/plugin-babel": "^0.2.4",
     "@tanstack/router-cli": "^1.167.38",
     "@types/bun": "1.4.2",
