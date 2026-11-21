@@ -1,5 +1,5 @@
 # Dependencies and sources. `auth-migrate` in compose.yaml stops here to run drizzle-kit.
-FROM oven/bun:1.4.2-alpine AS deps
+FROM oven/bun:1.4.4-alpine AS deps
 WORKDIR /app
 COPY package.json bun.lock bunfig.toml ./
 RUN bun install --frozen-lockfile
@@ -19,7 +19,7 @@ ENV VITE_API_URL=$VITE_API_URL \
     BETTER_AUTH_JWT_AUDIENCE=vibestrap-api
 RUN bun run generate && bun run build
 
-FROM oven/bun:1.4.2-alpine
+FROM oven/bun:1.4.4-alpine
 WORKDIR /app
 RUN addgroup -g 10001 app && adduser -D -u 10001 -G app app
 COPY package.json bun.lock bunfig.toml ./
